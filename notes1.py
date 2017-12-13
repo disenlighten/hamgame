@@ -334,6 +334,91 @@ Out[142]:
  ['A. Providing personal radio communications for as many citizens as possible',
   ''])
 
-In [143]:                      
-                    
+In [143]:   
+
+
+
+# Progress on 12/12
+
+In [154]: f = open('/Users/james/repos/hamgame/ham_questions_groomed.txt','r')
+     ...: readLines = f.readlines()
+     ...: Types = [line.split("\n") for line in readLines]
+     ...: 
+ 
+In [159]: by_eights = list(grouper(Types, 8))
+
+In [160]: by_eights[0]
+Out[160]: 
+(['~~', ''],
+ ['', ''],
+ ['T1A01 (C) [97.1]', ''],
+ ['Which of the following is a purpose of the Amateur Radio Service as stated in the FCC rules and regulations?',
+  ''],
+ ['A. Providing personal radio communications for as many citizens as possible',
+  ''],
+ ['B. Providing communications for international non-profit organizations',
+  ''],
+ ['C. Advancing skills in the technical and communication phases of the radio art',
+  ''],
+ ['D. All of these choices are correct ', ''])
+
+In [161]: by_eights[1]
+Out[161]: 
+(['~~', ''],
+ ['', ''],
+ ['T1A02 (C) [97.1]', ''],
+ ['Which agency regulates and enforces the rules for the Amateur Radio Service in the United States?',
+  ''],
+ ['A. FEMA', ''],
+ ['B. The ITU', ''],
+ ['C. The FCC', ''],
+ ['D. Homeland Security', ''])
+
+
+In [168]: import re
+
+In [169]: test = re.split(r'[()]',by_eights[1][2])
+     ...: 
+     ...: 
+     ...: 
+     ...: 
+     ...: 
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-169-13c5258aff6b> in <module>()
+----> 1 test = re.split(r'[()]',by_eights[1][2])
+      2 
+      3 
+      4 
+      5 
+
+/usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/re.py in split(pattern, string, maxsplit, flags)
+    201     and the remainder of the string is returned as the final element
+    202     of the list.'"""'
+    203     return _compile(pattern, flags).split(string, maxsplit)
+    204 
+    205 def findall(pattern, string, flags=0):
+
+TypeError: expected string or bytes-like object
+
+
+
+# Better progress: 12/12
+
+
+In [179]: f = open('/Users/james/repos/hamgame/ham_questions_groomed.txt','r')
+     ...: data = f.read().splitlines()
+
+In [184]: by_eights[1][2]
+Out[184]: 'T1A02 (C) [97.1]'
+
+In [181]: by_eights = list(grouper(data, 8))
+
+In [185]: re.split(r'[()]',by_eights[1][2])[1]
+Out[185]: 'C'
+
+#see defaultdict : https://stackoverflow.com/questions/960733/python-creating-a-dictionary-of-lists
+
+In [188]: for i in range(0,426):
+     ...:     print(by_eights[i][1])                  
                                                                                      
