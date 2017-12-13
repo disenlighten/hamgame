@@ -2167,10 +2167,6 @@ C. To prevent coupling of unwanted signals to or from the wire
 D. To couple the wire to other signals
 ~~
 
-SUBELEMENT T7 – Station equipment: common transmitter and receiver problems; antenna measurements; troubleshooting; basic repair and testing – [4 Exam Questions - 4 Groups]
-
-T7A – Station equipment: receivers; transmitters; transceivers; modulation; transverters; low power and weak signal operation; transmit and receive amplifiers
-
 T7A01 (B)
 Which term describes the ability of a receiver to detect the presence of a signal?
 A. Linearity
@@ -2258,8 +2254,6 @@ B. At the output of the transmitter's power amplifier
 C. Between a transmitter and antenna tuner
 D. At the receiver's audio output
 ~~
-
-T7B – Common transmitter and receiver problems: symptoms of overload and overdrive; distortion; causes of interference; interference and consumer electronics; part 15 devices; over and under modulation; RF feedback; off frequency signals; fading and noise; problems with digital communications interfaces 
 
 T7B01 (D)
 What can you do if you are told your FM handheld or mobile transceiver is over-deviating?
@@ -2356,8 +2350,6 @@ B. Add a high pass filter to the TV antenna input
 C. Add a preamplifier to the TV antenna input
 D. Be sure all TV coaxial connectors are installed properly
 ~~
-
-T7C – Antenna measurements and troubleshooting: measuring SWR; dummy loads; coaxial cables; feed line failure modes 
 
 T7C01 (A)
 What is the primary purpose of a dummy load?
@@ -2463,8 +2455,6 @@ C. A low voltage power supply and a DC relay
 D. A 50 ohm reactance used to terminate a transmission line 
 ~~
 
-T7D – Basic repair and testing: soldering; using basic test instruments; connecting a voltmeter, ammeter, or ohmmeter 
-
 T7D01 (B)
 Which instrument would you use to measure electric potential or electromotive force?
 A. An ammeter
@@ -2561,10 +2551,6 @@ C. Ensure that the circuit is grounded through the voltmeter
 D. Ensure that the voltmeter is set to the correct frequency
 ~~
 
-SUBELEMENT T8 – Modulation modes: amateur satellite operation; operating activities; non-voice communications – [4 Exam Questions - 4 Groups]
-
-T8A – Modulation modes: bandwidth of various signals; choice of emission type
-
 T8A01 (C)
 Which of the following is a form of amplitude modulation?
 A. Spread-spectrum
@@ -2653,8 +2639,6 @@ C. 1000 Hz
 D. 15 kHz
 ~~
 
-T8B - Amateur satellite operation; Doppler shift, basic orbits, operating protocols; control operator, transmitter power considerations; satellite tracking; digital modes 
-
 T8B01 (D) [97.301, 97.207(c)]
 Who may be the control operator of a station communicating through an amateur satellite or space station?
 A. Only an Amateur Extra Class operator
@@ -2742,8 +2726,6 @@ B. PSK31
 C. FM Packet
 D. WSJT
 ~~
-
-T8C – Operating activities: radio direction finding; radio control; contests; linking over the Internet; grid locators 
 
 T8C01 (C)
 Which of the following methods is used to locate sources of noise interference or jamming?
@@ -2849,9 +2831,6 @@ C. A system for informing amateurs in real time of the frequency of active DX st
 D. A technique for measuring signal strength of an amateur transmitter via the Internet
 ~~
 
-
-T8D – Non-voice communications: image signals; digital modes; CW; packet; PSK31; APRS; error detection and correction; NTSC
-
 T8D01 (D)
 Which of the following is an example of a digital communications method?
 A. Packet
@@ -2939,10 +2918,6 @@ B. A system used to encrypt command signals to an amateur radio satellite
 C. A digital scheme whereby the receiving station detects errors and sends a request to the sending station to retransmit the information 
 D. A method of compressing the data in a message so more information can be sent in a shorter time 
 ~~
-
-SUBELEMENT T9 – Antennas and feed lines - [2 Exam Questions - 2 Groups]
-
-T9A – Antennas: vertical and horizontal polarization; concept of gain; common portable and mobile antennas; relationships between antenna length and frequency
 
 T9A01 (C)
 What is a beam antenna?
@@ -3056,8 +3031,6 @@ C. Installing a spring at the base of the antenna to absorb the effects of colli
 D. Making the antenna heavier so it will resist wind effects when in motion
 ~~
 
-T9B – Feed lines: types of feed lines; attenuation vs. frequency; SWR concepts; matching; weather protection; choosing RF connectors and feed lines 
-
 T9B01 (B)
 Why is it important to have a low SWR in an antenna system that uses coaxial cable feed line?
 A. To reduce television interference 
@@ -3145,9 +3118,6 @@ B. Multi-conductor unbalanced cable
 C. Air-insulated hard line
 D. 75-ohm flexible coax
 ~~
-SUBELEMENT T0 – Electrical safety: AC and DC power circuits; antenna installation; RF hazards – [3 Exam Questions - 3 Groups]
-
-T0A – Power circuits and hazards: hazardous voltages; fuses and circuit breakers; grounding; lightning protection; battery safety; electrical code compliance
 
 T0A01 (B)
 Which of the following is a safety hazard of a 12-volt storage battery?
@@ -3236,8 +3206,6 @@ B. Circulating currents inside the transformer might cause damage
 C. The fuse might blow if you remove the cover
 D. You might receive an electric shock from the charged stored in large capacitors
 ~~
-
-T0B – Antenna safety: tower safety; erecting an antenna support; overhead power lines; installing an antenna
 
 T0B01 (C)
 When should members of a tower work team wear a hard hat and safety glasses?
@@ -3334,8 +3302,6 @@ B. Make sure that all bends in the ground wires are clean, right angle bends
 C. Ensure that connections are short and direct
 D. All of these choices are correct
 ~~
-
-T0C - RF hazards: radiation exposure; proximity to antennas; recognized safe power levels; exposure to others; radiation types; duty cycle 
 
 T0C01 (D)
 What type of radiation are VHF and UHF radio signals?
