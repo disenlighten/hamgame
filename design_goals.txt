@@ -13,3 +13,12 @@ the id and inputted answer are stored.
 
 * At the end of the test, the score is given and questions with wrong: and correct: answers are displayed. 
 
+* maintain a list of correctly-answered questions so that those will not be repeated
+** check against these when ids are being chosen randomly
+** dump to json at the end of the game and import
+*** If the json file does not exist in the current directory, create it
+
+
+
+
+

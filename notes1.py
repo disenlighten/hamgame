@@ -476,3 +476,16 @@ D. Roof mounted antennas are always the easiest to install
 C
 C. A roof mounted antenna normally provides the most uniform radiation pattern 
 B. Only roof mounting can guarantee a vertically polarized signal
+
+# 12/14
+# function to display questions to Users
+
+def present_question(chosen_question):
+    """
+    Present a question to the player
+    """
+    print(bigdct[chosen_question]['question'])
+    print(bigdct[chosen_question]['ans_a'])
+    print(bigdct[chosen_question]['ans_b'])
+    print(bigdct[chosen_question]['ans_c'])
+    print(bigdct[chosen_question]['ans_d'])
