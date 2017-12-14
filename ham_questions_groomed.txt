@@ -319,6 +319,7 @@ B. Technician, Technician Plus, General, Advanced
 C. Novice, Technician Plus, General, Advanced
 D. Technician, General, Amateur Extra
 ~~
+
 T1C14 (D) [97.21(a) (1)]
 Who may select a vanity call sign for a club station?
 A. Any Extra Class member of the club

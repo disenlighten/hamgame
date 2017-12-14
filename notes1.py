@@ -406,19 +406,34 @@ TypeError: expected string or bytes-like object
 # Better progress: 12/12
 
 
-In [179]: f = open('/Users/james/repos/hamgame/ham_questions_groomed.txt','r')
-     ...: data = f.read().splitlines()
+f = open('/Users/james/repos/hamgame/ham_questions_groomed.txt','r')
+data = f.read().splitlines()
 
-In [184]: by_eights[1][2]
-Out[184]: 'T1A02 (C) [97.1]'
+by_eights[1][2]
+'T1A02 (C) [97.1]'
 
-In [181]: by_eights = list(grouper(data, 8))
+by_eights = list(grouper(data, 8))
 
-In [185]: re.split(r'[()]',by_eights[1][2])[1]
-Out[185]: 'C'
+re.split(r'[()]',by_eights[1][2])[1]
+'C'
 
 #see defaultdict : https://stackoverflow.com/questions/960733/python-creating-a-dictionary-of-lists
 
-In [188]: for i in range(0,426):
-     ...:     print(by_eights[i][1])                  
+for i in range(0,426):
+    print(by_eights[i][1])                  
                                                                                      
+
+# Read in questions to dictionary
+
+bigdct={} 
+
+for i in range(0,426):
+    id=re.split(r'[ ()]',by_eights[i][2])[0]
+    bigdct[id] = {}
+    bigdct[id]['correct_ans']=re.split(r'[()]',by_eights[i][2])[1]
+    bigdct[id]['question']=by_eights[i][3]
+    bigdct[id]['ans_a']=by_eights[i][4]
+    bigdct[id]['ans_b']=by_eights[i][5]
+    bigdct[id]['ans_c']=by_eights[i][6]
+    bigdct[id]['ans_d']=by_eights[i][7]
+    
