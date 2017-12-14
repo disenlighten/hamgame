@@ -48,7 +48,7 @@ f = open('/Users/james/Downloads/2014-2018 Tech Pool.txt','r')
 x = f.readlines().splitlines()
 
 
-
+#FAIL
 In [42]: with open("/Users/james/Downloads/2014-2018 Tech Pool.txt") as f:
     ...:     for line in f:
     ...:         if "~" in line:
@@ -68,6 +68,7 @@ TypeError                                 Traceback (most recent call last)
 
 TypeError: 'int' object is not an iterator
 
+#FAILL
 In [44]: with open("/Users/james/Downloads/2014-2018 Tech Pool.txt") as f:
     ...:     for line in f:
     ...:         if "~" in line:
@@ -110,16 +111,6 @@ In [103]: f = open('/Users/james/Downloads/2014-2018 Tech Pool.txt','r')
      ...:             
      ...:             
      ...:         
-
-
-
-
-In [113]: for e in Types[1:5:]:
-     ...:     print e
-  File "<ipython-input-113-a0c7481d9560>", line 2
-    print e
-          ^
-SyntaxError: Missing parentheses in call to 'print'
 
 
 In [114]: for e in Types[1:5:]:
@@ -170,80 +161,6 @@ TypeError                                 Traceback (most recent call last)
 
 TypeError: 'NoneType' object is not subscriptable
 
-In [118]: from itertools import izip_longest # needed for grouper
-     ...: 
-     ...: def grouper(iterable, n, fillvalue=None):
-     ...:     "Collect data into fixed-length chunks or blocks"
-     ...:     # grouper('ABCDEFG', 3, 'x') --> ABC DEF Gxx
-     ...:     args = [iter(iterable)] * n
-     ...:     return izip_longest(fillvalue=fillvalue, *args)
-     ...: 
----------------------------------------------------------------------------
-ImportError                               Traceback (most recent call last)
-<ipython-input-118-87c2e792e7da> in <module>()
-----> 1 from itertools import izip_longest # needed for grouper
-      2 
-      3 def grouper(iterable, n, fillvalue=None):
-      4     "Collect data into fixed-length chunks or blocks"
-      5     # grouper('ABCDEFG', 3, 'x') --> ABC DEF Gxx
-
-ImportError: cannot import name 'izip_longest'
-
-In [119]: from intertools import izip_longest
----------------------------------------------------------------------------
-ImportError                               Traceback (most recent call last)
-<ipython-input-119-6cf9d48cb5cc> in <module>()
-----> 1 from intertools import izip_longest
-
-ImportError: No module named 'intertools'
-
-In [120]: from itertools import izip_longest
----------------------------------------------------------------------------
-ImportError                               Traceback (most recent call last)
-<ipython-input-120-61e5597c5f71> in <module>()
-----> 1 from itertools import izip_longest
-
-ImportError: cannot import name 'izip_longest'
-
-In [121]: from itertools import izip
----------------------------------------------------------------------------
-ImportError                               Traceback (most recent call last)
-<ipython-input-121-e1e6597ef5d6> in <module>()
-----> 1 from itertools import izip
-
-ImportError: cannot import name 'izip'
-
-In [122]: from itertools import *
-
-In [123]: izip
----------------------------------------------------------------------------
-NameError                                 Traceback (most recent call last)
-<ipython-input-123-461917860708> in <module>()
-----> 1 izip
-
-NameError: name 'izip' is not defined
-
-In [124]: from more-itertools install izip_longest
-  File "<ipython-input-124-7c9d576cb584>", line 1
-    from more-itertools install izip_longest
-             ^
-SyntaxError: invalid syntax
-
-
-In [125]: from more_itertools install izip_longest
-  File "<ipython-input-125-1b0c695d0797>", line 1
-    from more_itertools install izip_longest
-                              ^
-SyntaxError: invalid syntax
-
-
-In [126]: from more_itertools import izip_longest
----------------------------------------------------------------------------
-ImportError                               Traceback (most recent call last)
-<ipython-input-126-1325c1a0fe99> in <module>()
-----> 1 from more_itertools import izip_longest
-
-ImportError: cannot import name 'izip_longest'
 
 In [127]: from itertools import zip_longest # needed for grouper
      ...: 
@@ -278,14 +195,6 @@ Out[131]:
   ''],
  ['', ''],
  ['T1A01 (C) [97.1]', ''])
-
-In [132]: Types(pop)
----------------------------------------------------------------------------
-NameError                                 Traceback (most recent call last)
-<ipython-input-132-a9231507a6ad> in <module>()
-----> 1 Types(pop)
-
-NameError: name 'pop' is not defined
 
 In [133]: Types[0]
 Out[133]: 
