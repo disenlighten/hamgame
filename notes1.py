@@ -437,3 +437,42 @@ for i in range(0,426):
     bigdct[id]['ans_c']=by_eights[i][6]
     bigdct[id]['ans_d']=by_eights[i][7]
     
+print(bigdct["T9A13"]["question"])
+
+bigdct["T9A13"]
+
+
+In [252]: bigdct['T9A13'].items()
+Out[252]: dict_items([('question', 'Why are VHF or UHF mobile antennas often mounted in the center of the vehicle roof?'), ('ans_a', 'A. Roof mounts have the lowest possible SWR of any mounting configuration'), ('ans_d', 'D. Roof mounted antennas are always the easiest to install'), ('correct_ans', 'C'), ('ans_c', 'C. A roof mounted antenna normally provides the most uniform radiation pattern '), ('ans_b', 'B. Only roof mounting can guarantee a vertically polarized signal')])
+
+In [253]: bigdct['T9A13'].keys()
+Out[253]: dict_keys(['question', 'ans_a', 'ans_d', 'correct_ans', 'ans_c', 'ans_b'])
+
+In [254]: bigdct['T9A13'].values()
+
+#json testing
+
+import json
+test = json.dumps(bigdct)   
+loaded_test=json.loads(test)
+
+In [261]: loaded_test['T9B11']
+Out[261]: 
+{'ans_a': 'A. 50-ohm flexible coax',
+ 'ans_b': 'B. Multi-conductor unbalanced cable',
+ 'ans_c': 'C. Air-insulated hard line',
+ 'ans_d': 'D. 75-ohm flexible coax',
+ 'correct_ans': 'C',
+ 'question': 'Which of the following types of feed line has the lowest loss at VHF and UHF?'}
+
+# Test looping through nested dict
+
+ In [266]: for k,v in bigdct['T9A13'].items():
+     ...:     print("{0}".format(v))
+     ...:     
+Why are VHF or UHF mobile antennas often mounted in the center of the vehicle roof?
+A. Roof mounts have the lowest possible SWR of any mounting configuration
+D. Roof mounted antennas are always the easiest to install
+C
+C. A roof mounted antenna normally provides the most uniform radiation pattern 
+B. Only roof mounting can guarantee a vertically polarized signal

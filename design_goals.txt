@@ -1,0 +1,15 @@
+Ham game design goals
+
+12/13/2017
+
+* From a dictionary of questions, randomly choose 35 questions from different subelements
+
+* Display multiple choice questions to the user, 1 at a time. 
+
+* Present a prompt for the user. The user enters letter answer as input. 
+
+* The answer is compared to the correct_ans. If it is correct, it is scored correct. If it is incorrect, 
+the id and inputted answer are stored. 
+
+* At the end of the test, the score is given and questions with wrong: and correct: answers are displayed. 
+
