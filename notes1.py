@@ -339,7 +339,7 @@ bigdct={}
 for i in range(0,426):
     id=re.split(r'[ ()]',by_eights[i][2])[0]
     bigdct[id] = {}
-    bigdct[id]['correct_ans']=re.split(r'[()]',by_eights[i][2])[1]
+    bigdct[id]['correct_ans']=(re.split(r'[()]',by_eights[i][2])[1]).lower()
     bigdct[id]['question']=by_eights[i][3]
     bigdct[id]['ans_a']=by_eights[i][4]
     bigdct[id]['ans_b']=by_eights[i][5]
@@ -389,6 +389,26 @@ B. Only roof mounting can guarantee a vertically polarized signal
 # 12/14
 # function to display questions to Users
 
+#import needed modules
+import random
+
+#Define varaibles
+correct_count = 0
+wrong_ans={}
+known_ans=[]
+
+
+#define prompt - 
+prompt = "\n  > "
+valid_answers=['a', 'b', 'c', 'd']
+
+helptext = "\n Enter the letter of your answer."
+helptext += "\n Enter 'showme' to see the answer now. "
+helptest += "\n Enter 'quit' to end the program.   > "
+
+#initialize my_guess variable
+my_guess = ""
+
 def present_question(chosen_question):
     """
     Present a question to the player
@@ -398,3 +418,52 @@ def present_question(chosen_question):
     print(bigdct[chosen_question]['ans_b'])
     print(bigdct[chosen_question]['ans_c'])
     print(bigdct[chosen_question]['ans_d'])
+
+
+present_question(chosen_question)
+my_guess = (input(prompt)).lower()
+
+# Notes on adding color to python
+#http://ozzmaker.com/add-colour-to-text-in-python/
+
+
+# Testing the valid_answers array
+In [287]: my_guess in valid_answers
+Out[287]: True
+
+# set the answer letters to lowercase 
+    bigdct[id]['correct_ans']=(re.split(r'[()]',by_eights[i][2])[1]).lower()
+
+In [294]: print(bigdct["T9A13"]["correct_ans"])
+c
+
+# Testing truth condition
+In [315]: my_guess='c'
+
+In [316]: my_guess == bigdct[chosen_question]['correct_ans']
+Out[316]: True
+
+#chosen_question=random.choice(bigdct[id]['question'])
+
+
+# First Test loop - confirmed sort of works!
+while my_guess != 'quit':
+    chosen_question=random.choice(list(bigdct.keys()))
+    present_question(chosen_question)
+    my_guess = (input(prompt)).lower()
+    if my_guess in valid_answers:
+        if my_guess == bigdct[chosen_question]['correct_ans']:
+            correct_count +=1
+            known_ans.append(chosen_question)   
+        else:
+            wrong_ans.update({chosen_question:my_guess})  
+    elif my_guess != 'quit':
+        print("\n Answer must be a letter a, b, c, or d.")
+    elif my_guess == 'quit':
+            print("Goodbye! Thanks for playing.")
+            break
+
+
+    
+
+
