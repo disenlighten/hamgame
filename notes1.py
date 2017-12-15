@@ -460,10 +460,43 @@ while my_guess != 'quit':
     elif my_guess != 'quit':
         print("\n Answer must be a letter a, b, c, or d.")
     elif my_guess == 'quit':
-            print("Goodbye! Thanks for playing.")
+            print("Goodbye! Keep studying, turkey legs!")
             break
 
 
-    
+#12/15
+#json testing part 2
+#main terminal 
+
+# dump the dictonary to json
+In [356]: import json
+     ...: test = json.dumps(bigdct)
+
+# open a new file for writing
+In [358]: f = open('/Users/james/repos/hamgame/technician_questions.json', 'w')
+
+#write out json to the file
+In [359]: f.write(test)
+
+
+#2nd terminal
+In [1]: import json
+
+#define the dictionary
+In [2]: bigdct = {}
+
+#repopulate the dictionary
+In [3]: with open('/Users/james/repos/hamgame/technician_questions.json') as json_data:
+   ...:     bigdct=json.load(json_data)
+   ...: 
+
+#close the open file 
+In [6]: json_data.close()
+
+#validate
+In [7]: print(bigdct["T9A13"]["question"])
+Why are VHF or UHF mobile antennas often mounted in the center of the vehicle roof?
+
+
 
 
