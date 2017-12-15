@@ -497,6 +497,36 @@ In [6]: json_data.close()
 In [7]: print(bigdct["T9A13"]["question"])
 Why are VHF or UHF mobile antennas often mounted in the center of the vehicle roof?
 
+###
+
+#make a function to show the answer
+
+def showme(chosen_question):
+    """
+    Get the correct answer immediately
+    """
+    print(bigdct[chosen_question]['correct_ans'])
+    wrong_ans.update({chosen_question:"skipped"})
+    return True
 
 
-
+# Second Test loop - testing showme - confirmed, works!
+while my_guess != 'quit':
+    chosen_question=random.choice(list(bigdct.keys()))
+    present_question(chosen_question)
+    my_guess = (input(prompt)).lower()
+    if my_guess in valid_answers:
+        if my_guess == bigdct[chosen_question]['correct_ans']:
+            correct_count +=1
+            known_ans.append(chosen_question)   
+        else:
+            wrong_ans.update({chosen_question:my_guess})  
+    elif my_guess == 'showme':
+        showme(chosen_question)
+    elif my_guess != 'quit':
+        print("\n Answer must be a letter a, b, c, or d.")
+    elif my_guess == 'quit':
+            print("Goodbye! Keep studying, turkey legs!")
+            my_guess=''
+            wrong_ans={}
+            break
