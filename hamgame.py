@@ -6,11 +6,16 @@ import random
 
 #define variables
 correct_count = 0
+known_count = 0
 wrong_ans={}
-known_ans={}
+known_ans=[]
 bigdct={}
 valid_answers=['a', 'b', 'c', 'd']
 my_guess = ""
+
+#define prompt - 
+prompt = "\n  > "
+
 
 #load dictionary
 with open('/Users/james/repos/hamgame/technician_questions.json') as json_data:
@@ -47,7 +52,7 @@ while my_guess != 'quit':
     if my_guess in valid_answers:
         if my_guess == bigdct[chosen_question]['correct_ans']:
             correct_count +=1
-            known_ans.append(chosen_question)   
+            known_ans.append(chosen_question)      
         else:
             wrong_ans.update({chosen_question:my_guess})  
     elif my_guess == 'showme':

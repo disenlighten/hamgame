@@ -394,20 +394,22 @@ import random
 
 #Define varaibles
 correct_count = 0
+known_count = 0
 wrong_ans={}
-known_ans=[]
-
+known_ans={}
+valid_answers=['a', 'b', 'c', 'd']
+my_guess = ""
 
 #define prompt - 
 prompt = "\n  > "
-valid_answers=['a', 'b', 'c', 'd']
+
 
 helptext = "\n Enter the letter of your answer."
 helptext += "\n Enter 'showme' to see the answer now. "
 helptest += "\n Enter 'quit' to end the program.   > "
 
 #initialize my_guess variable
-my_guess = ""
+
 
 def present_question(chosen_question):
     """
@@ -518,12 +520,16 @@ while my_guess != 'quit':
     if my_guess in valid_answers:
         if my_guess == bigdct[chosen_question]['correct_ans']:
             correct_count +=1
-            known_ans.append(chosen_question)   
+            known_ans.update({chosen_question:known_count++})   
         else:
             wrong_ans.update({chosen_question:my_guess})  
     elif my_guess == 'showme':
         showme(chosen_question)
+# Help not working
+#    elif my_guess == 'help':
+#        my_guess = (input(helptext)).lower()
     elif my_guess != 'quit':
+        #Has the same problem as help - presents a new question afterward...
         print("\n Answer must be a letter a, b, c, or d.")
     elif my_guess == 'quit':
             print("Goodbye! Keep studying, turkey legs!")
