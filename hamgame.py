@@ -64,3 +64,11 @@ while my_guess != 'quit':
             my_guess=''
             wrong_ans={}
             break
+
+
+# Notes: 12/15:
+#Needed features: 
+# * limit to 35 questions
+# * score at the end
+# * Make the help and "invalid answer" conditions return to the same question
+# * Implement the count for correct answers
