@@ -8,7 +8,7 @@ import random
 correct_count = 0
 known_count = 0
 wrong_ans={}
-known_ans=[]
+known_ans={}
 bigdct={}
 valid_answers=['a', 'b', 'c', 'd']
 my_guess = ""
@@ -18,7 +18,7 @@ prompt = "\n  > "
 
 
 #load dictionary
-with open('/Users/james/repos/hamgame/technician_questions.json') as json_data:
+with open('./technician_questions.json') as json_data:
     bigdct=json.load(json_data)
 json_data.close()
 

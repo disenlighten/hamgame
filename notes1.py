@@ -536,3 +536,45 @@ while my_guess != 'quit':
             my_guess=''
             wrong_ans={}
             break
+
+
+#12/17 - attempted refinements to main loop
+
+
+total_question_count=0
+while total_question_count<34 and my_guess != 'quit':
+    chosen_question=random.choice(list(bigdct.keys()))
+    total_question_count+=1
+    present_question(chosen_question)
+    my_guess = (input(prompt)).lower()
+    while my_guess != 'quit':
+        if my_guess in valid_answers:
+              if my_guess == bigdct[chosen_question]['correct_ans']:
+                  correct_count +=1
+                  known_ans.update({chosen_question:known_count}) 
+                  known_ans[chosen_question] +=1
+                  break 
+              else:
+                  wrong_ans.update({chosen_question:my_guess})
+                  break  
+        elif my_guess == 'showme':
+            showme(chosen_question)
+            continue
+          #help not working
+        elif my_guess == 'help':
+            my_guess = (input(helptext)).lower()
+            continue
+        elif my_guess != 'quit':
+            #Has the same problem as help - presents a new question afterward...
+            print("\n Answer must be a letter a, b, c, or d.")
+            break
+        elif my_guess == 'quit':
+            print("Goodbye! Keep studying, turkey legs!")
+            my_guess=''
+            wrong_ans={}
+            break
+
+#problems - quit still does not work
+#total question count not getting incremented
+#could use a counter to stay on same question?
+
