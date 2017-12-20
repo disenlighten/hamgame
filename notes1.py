@@ -406,7 +406,7 @@ prompt = "\n  > "
 
 helptext = "\n Enter the letter of your answer."
 helptext += "\n Enter 'showme' to see the answer now. "
-helptest += "\n Enter 'quit' to end the program.   > "
+helptest += "\n Enter 'quit' to end the program."
 
 #initialize my_guess variable
 
@@ -538,8 +538,29 @@ while my_guess != 'quit':
             break
 
 
-#12/17 - attempted refinements to main loop
+#12/18 - more attempted refinements to main loop
 
+
+helptext = "\n Enter the letter of your answer."
+helptext += "\n Enter 'showme' to see the answer now. "
+helptext += "\n Enter 'quit' to end the program."
+
+def check_input(current_guess):
+    """
+    Checks input and handles exceptions
+    """
+    if current_guess in valid_answers:
+        return True
+
+    if len(current_guess) > 1 and current_guess != "quit" and current_guess != "showme":
+        print("You may only guess 1 letter at a time, please.")
+        return False
+
+    if current_guess == 'help':
+            current_guess = print(helptext)
+ 
+    else:
+        return False
 
 total_question_count=0
 while total_question_count<34 and my_guess != 'quit':
@@ -548,7 +569,8 @@ while total_question_count<34 and my_guess != 'quit':
     present_question(chosen_question)
     my_guess = (input(prompt)).lower()
     while my_guess != 'quit':
-        if my_guess in valid_answers:
+        if check_input(my_guess):
+        #if my_guess in valid_answers:
               if my_guess == bigdct[chosen_question]['correct_ans']:
                   correct_count +=1
                   known_ans.update({chosen_question:known_count}) 
@@ -557,17 +579,6 @@ while total_question_count<34 and my_guess != 'quit':
               else:
                   wrong_ans.update({chosen_question:my_guess})
                   break  
-        elif my_guess == 'showme':
-            showme(chosen_question)
-            continue
-          #help not working
-        elif my_guess == 'help':
-            my_guess = (input(helptext)).lower()
-            continue
-        elif my_guess != 'quit':
-            #Has the same problem as help - presents a new question afterward...
-            print("\n Answer must be a letter a, b, c, or d.")
-            break
         elif my_guess == 'quit':
             print("Goodbye! Keep studying, turkey legs!")
             my_guess=''
@@ -577,4 +588,10 @@ while total_question_count<34 and my_guess != 'quit':
 #problems - quit still does not work
 #total question count not getting incremented
 #could use a counter to stay on same question?
+
+#new problems - 12/19
+#An invalid answer dumps you into a loop where nothing happens
+#help is caught by the condition of alerting on multiple letters
+# After you choose multiple letters, it _still_ gives you a new question
+
 
