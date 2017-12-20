@@ -551,14 +551,15 @@ def check_input(current_guess):
     """
     if current_guess in valid_answers:
         return True
-
-    if len(current_guess) > 1 and current_guess != "quit" and current_guess != "showme":
+    if my_guess == 'showme':
+        showme(chosen_question)
+        return True
+    if current_guess == 'help':
+        print(helptext)
+        return True            
+    if len(current_guess) > 1 and current_guess != "quit":
         print("You may only guess 1 letter at a time, please.")
         return False
-
-    if current_guess == 'help':
-            current_guess = print(helptext)
- 
     else:
         return False
 
@@ -583,6 +584,7 @@ while total_question_count<34 and my_guess != 'quit':
             print("Goodbye! Keep studying, turkey legs!")
             my_guess=''
             wrong_ans={}
+
             break
 
 #problems - quit still does not work
@@ -594,4 +596,75 @@ while total_question_count<34 and my_guess != 'quit':
 #help is caught by the condition of alerting on multiple letters
 # After you choose multiple letters, it _still_ gives you a new question
 
+def present_results(score, wrong_answers):
+    """
+    Presents the score and wrong/correct answers to player
+    """
+    final_score = (score/35)*100
+    print("Your final score is: " + (str(round(final_score))))
+    
+    if final_score > 80: 
+        print("You passed!")
+    else:
+        print("You failed.")
 
+    for k,v in wrong_answers.items():
+        print("Question ID: " +  k)
+        print(bigdct[k]['question'])
+        print(bigdct[k]['ans_a'])
+        print(bigdct[k]['ans_b'])
+        print(bigdct[k]['ans_c'])
+        print(bigdct[k]['ans_d'])
+        print("Your answer was: " + v) 
+        print("The correct answer is: " + bigdct[k]['correct_ans'])
+
+
+# Test code for using the wrong_ans dict
+In [109]: for k,v in wrong_ans.items():
+     ...:     print("Your answer was:" +  k)
+     ...:     print("The question id was" + v)
+
+In [117]: present_results(correct_count,wrong_ans)
+Your final score is: 63
+You failed.
+Question ID: T6B10
+What are the three electrodes of a PNP or NPN transistor?
+A. Emitter, base, and collector
+B. Source, gate, and drain
+C. Cathode, grid, and plate
+D. Cathode, drift cavity, and collector
+Your answer was: db
+The correct answer is: a
+Question ID: T1F11
+To which foreign stations do the FCC rules authorize the transmission of non-emergency third party communications?
+A. Any station whose government permits such communications
+B. Those in ITU Region 2 only
+C. Those in ITU Regions 2 and 3 only
+D. Those in ITU Region 3 only
+Your answer was: help
+The correct answer is: a
+Question ID: T5D07
+What is the current flow in a circuit with an applied voltage of 120 volts and a resistance of 80 ohms?
+A. 9600 amperes
+B. 200 amperes
+C. 0.667 amperes
+D. 1.5 amperes
+Your answer was: showme
+The correct answer is: d
+Question ID: T7D02
+What is the correct way to connect a voltmeter to a circuit?
+A. In series with the circuit
+B. In parallel with the circuit
+C. In quadrature with the circuit
+D. In phase with the circuit
+Your answer was: showme
+The correct answer is: b
+Question ID: T0B10
+Which of the following is true concerning grounding conductors used for lightning protection?
+A. Only non-insulated wire must be used
+B. Wires must be carefully routed with precise right-angle bends
+C. Sharp bends must be avoided
+D. Common grounds must be avoided
+Your answer was: d
+The correct answer is: c
+ 
