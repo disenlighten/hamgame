@@ -16,6 +16,10 @@ my_guess = ""
 #define prompt - 
 prompt = "\n  > "
 
+#define helptext
+helptext = "\n Enter the letter of your answer."
+helptext += "\n Enter 'showme' to see the answer now. "
+helptext += "\n Enter 'quit' to end the program."
 
 #load dictionary
 with open('./technician_questions.json') as json_data:
@@ -40,7 +44,7 @@ def check_input(current_guess):
     """
     if current_guess in valid_answers:
         return True
-    if my_guess == 'showme':
+    if current_guess == 'showme':
         showme(chosen_question)
         return True
     if current_guess == 'help':
