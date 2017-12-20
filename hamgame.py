@@ -52,9 +52,13 @@ def check_input(current_guess):
         return True            
     if len(current_guess) > 1 and current_guess != "quit":
         print("You may only guess 1 letter at a time, please.")
-        return False
-    else:
-        return False
+        return True
+    if not current_guess in valid_answers:
+        print("Valid answer are a, b, c, d.")
+        return True
+    #else:
+        
+     #   return False
 
 def present_question(chosen_question):
     """
@@ -103,7 +107,9 @@ while total_question_count<34 and my_guess != 'quit':
                 known_ans[chosen_question] +=1
                 break       
             else:
-                   wrong_ans.update({chosen_question:my_guess})  
+                wrong_ans.update({chosen_question:my_guess})
+                break
+
     
         elif my_guess == 'quit':
                 print("\n Goodbye! Keep studying, turkey legs!")
