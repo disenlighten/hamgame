@@ -667,4 +667,19 @@ C. Sharp bends must be avoided
 D. Common grounds must be avoided
 Your answer was: d
 The correct answer is: c
- 
+
+
+***
+
+#Open the correct answers file
+with open('./correct_answers.json') as json_data:
+    kwown_ans=json.load(json_data)
+json_data.close()
+
+#Write to the correct answers file 
+f = open('./correct_answers.json', 'w')
+  
+f.write(test2)
+
+f.close()
+
