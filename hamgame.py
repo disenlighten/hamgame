@@ -117,6 +117,9 @@ while total_question_count<34 and my_guess != 'quit':
                 my_guess=''
                 wrong_ans={}
                 break
+present_results(correct_count,wrong_ans)
+my_guess=''
+wrong_ans={}
 
    
 # Notes: 12/15:
