@@ -9,6 +9,7 @@ correct_count = 0
 known_count = 0
 wrong_ans={}
 known_ans={}
+quiz_used=[]
 bigdct={}
 valid_answers=['a', 'b', 'c', 'd']
 my_guess = ""
@@ -96,35 +97,32 @@ def present_results(score, wrong_answers):
 total_question_count=0
 while total_question_count<34 and my_guess != 'quit':
     chosen_question=random.choice(list(bigdct.keys()))
-    total_question_count+=1
-    present_question(chosen_question)
-    my_guess = (input(prompt)).lower()
-    while my_guess != 'quit':
-        if check_input(my_guess):
-            if my_guess == bigdct[chosen_question]['correct_ans']:
-                correct_count +=1
-                known_ans.update({chosen_question:known_count}) 
-                known_ans[chosen_question] +=1
-                break       
-            else:
-                wrong_ans.update({chosen_question:my_guess})
-                break
-
+    if chosen_question not in quiz_used:
+        total_question_count+=1
+        present_question(chosen_question)
+        my_guess = (input(prompt)).lower()
+        while my_guess != 'quit':
+            if check_input(my_guess):
+                if my_guess == bigdct[chosen_question]['correct_ans']:
+                    correct_count +=1
+                    known_ans.update({chosen_question:known_count}) 
+                    known_ans[chosen_question] +=1
+                    quiz_used.append(chosen_question)
+                    break       
+                else:
+                    quiz_used.append(chosen_question)
+                    wrong_ans.update({chosen_question:my_guess})
+                    break
     
-        elif my_guess == 'quit':
-                print("\n Goodbye! Keep studying, turkey legs!")
-                present_results(correct_count,wrong_ans)
-                my_guess=''
-                wrong_ans={}
-                break
+        
+            elif my_guess == 'quit':
+                    print("\n Goodbye! Keep studying, turkey legs!")
+                    present_results(correct_count,wrong_ans)
+                    my_guess=''
+                    wrong_ans={}
+                    quiz_used=[]
+                    break
 present_results(correct_count,wrong_ans)
 my_guess=''
 wrong_ans={}
-
-   
-# Notes: 12/15:
-#Needed features: 
-# * limit to 35 questions
-# * score at the end
-# * Make the help and "invalid answer" conditions return to the same question
-# * Implement the count for correct answers
+quiz_used=[]

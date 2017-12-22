@@ -18,6 +18,12 @@ the id and inputted answer are stored.
 ** dump to json at the end of the game and import
 *** If the json file does not exist in the current directory, create it
 
+* Don't allow repeats in the same quiz. (Make a "don't allow repeats" function?)
+
+
+
+
+
 
 
 
