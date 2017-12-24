@@ -78,7 +78,7 @@ def present_results(score, wrong_answers):
     final_score = (score/35)*100
     print("Your final score is: " + (str(round(final_score))))
     
-    if final_score > 80: 
+    if final_score >= 80: 
         print("You passed!")
     else:
         print("You failed.")
