@@ -688,3 +688,13 @@ f.close()
 # bash commands to turn wrong answer corrections into a study guide
 grep 'Question ID' hamquiz_2017122* | awk -F"[T]" '{ print $2 }' | sed s/^/T/g | sort -u > study_question_id.txt
 for x in $(cat study_question_id.txt); do grep -A7 $x ~/repos/hamgame/ham_questions_groomed.txt ; done > study_guide.txt
+
+### Notes on colored text: 
+# Python 3
+print("\x1b[1;“32m”;40m Bright Green  \n")
+# Python 2.7
+print("\033[1;31;40m Bright Red  \n")
+
+#Return the terminal to normal color
+print("\x1b[0m")
+

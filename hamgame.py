@@ -108,13 +108,15 @@ while total_question_count<34 and my_guess != 'quit':
                     known_ans.update({chosen_question:known_count}) 
                     known_ans[chosen_question] +=1
                     quiz_used.append(chosen_question)
+                    print("\x1b[1;32;40m ----------------  \n")
+                    print("\x1b[0m")
                     break       
                 else:
                     quiz_used.append(chosen_question)
                     wrong_ans.update({chosen_question:my_guess})
-                    break
-    
-        
+                    print("\x1b[1;31;40m ----------------  \n")
+                    print("\x1b[0m")
+                    break        
             elif my_guess == 'quit':
                     print("\n Goodbye! Keep studying, turkey legs!")
                     present_results(correct_count,wrong_ans)
