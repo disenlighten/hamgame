@@ -698,3 +698,106 @@ print("\033[1;31;40m Bright Red  \n")
 #Return the terminal to normal color
 print("\x1b[0m")
 
+
+#Sed works, but has an extra space
+gsed -E -r 's/( [A-D]\.)/\n\1/g' general_questions_groomed.txt
+
+by_sixes = list(grouper(Types, 6))
+
+for i in range(0,454):
+   print(by_sixes[i][1])
+
+#no
+for i in range(0,454):
+    id=re.split(r'[ ()]',by_sixes[i][2])[0]
+    bigdct[id] = {}
+    bigdct[id]['correct_ans']=(re.split(r'[()]',by_sixes[i][2])[1]).lower()
+    bigdct[id]['question']=by_sixes[i][3]
+    bigdct[id]['ans_a']=by_sixes[i][4]
+    bigdct[id]['ans_b']=by_sixes[i][5]
+    bigdct[id]['ans_c']=by_sixes[i][6]
+    bigdct[id]['ans_d']=by_sixes[i][7]
+
+
+gsed -E -r 's/( ~~$)/\n\1/g' general_questions_groomed.txt | gsed -e 's/ ~~/~~/g' > general_questions.test
+
+f = open('/Users/james/repos/hamgame/ham_questions_groomed.txt','r')
+readLines = f.readlines()
+Types = [line.split("\n") for line in readLines]
+
+for i in range(0,454):
+    id=re.split(r'[ ()]',by_sevens[i][0])[0]
+    bigdct[id] = {}
+    bigdct[id]['correct_ans']=(re.split(r'[()]',by_sevens[i][0])[1]).lower()
+    bigdct[id]['question']=by_sevens[i][1]
+    bigdct[id]['ans_a']=by_sevens[i][2]
+    bigdct[id]['ans_b']=by_sevens[i][3]
+    bigdct[id]['ans_c']=by_sevens[i][4]
+    bigdct[id]['ans_d']=by_sevens[i][5]
+
+#worked
+    In [176]: re.split(r'[ ()]',by_sevens[0][0][0])
+
+Out[176]: ['G1A01', '', 'C', '', '[97.301', 'd', ']']
+
+
+#2019-10-01
+In [212]: re.split(r'[\s]',testobj)
+     ...:
+     ...:
+     ...:
+     ...:
+Out[212]: ['G1A01', '(C)', '[97.301(d)]']
+
+In [213]: print(testobj)
+G1A01 (C) [97.301(d)]
+
+In [214]: blob=re.split(r'[\s]',testobj)
+     ...:
+     ...:
+     ...:
+     ...:
+     ...:
+
+In [215]: type(blob)
+Out[215]: list
+
+In [216]: blob[1]
+Out[216]: '(C)'
+
+
+
+#df['word'] is a list. Converting to string just destroys your list.
+
+#You need to apply regex on each member:
+
+for r, map in re_map.items():
+    df['word'] = [re.sub(r, map, e) for e in df['word']]:
+
+#classical alternate method without list comprehension:
+
+ for r, map in re_map.items():
+     d = df['word']
+     for i,e in enumerate(d):
+         d[i] = re.sub(r, map, e)
+
+#2019-10-02
+#Added a ~~ to the first line of the file and 
+#added newlines after each delimiter
+gsed -E -r 's/(~~)/\1\n/' general_questions_groomed.bak > general_questions_groomed.txt
+
+# fix situation with ~~ at the end of a line
+gsed -E -r 's/( ~~)/\n\1/' general_questions_groomed.bak |  gsed -e 's/ ~~/~~/g' > general_questions_groomed.txt
+
+#works
+f = open('/Users/james/repos/hamgame/general_questions_groomed.txt','r')
+
+readlines = f.readlines()
+
+Types = [line.split("\n") for line in readlines]
+
+by_sevens = list(grouper(Types, 7))
+
+#prints a list of ids
+for i in range(0,425):
+    print(by_sevens[i][1])
