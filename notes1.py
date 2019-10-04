@@ -798,6 +798,60 @@ Types = [line.split("\n") for line in readlines]
 
 by_sevens = list(grouper(Types, 7))
 
+
 #prints a list of ids
 for i in range(0,425):
     print(by_sevens[i][1])
+
+#2019-10-03
+
+#works
+In [310]: re.split(r'[ ()]',by_sevens[1][1][0])[0]
+Out[310]: 'G1A02'
+
+#works
+In [312]: (re.split(r'[ ()]',by_sevens[1][1][0])[2]).lower()
+Out[312]: 'b'
+
+bigdct = {}
+
+for i in range(0,454):
+    id=re.split(r'[ ()]',by_sevens[1][1][0])[0]
+    bigdct[id] = {}
+    bigdct[id]['correct_ans']=(re.split(r'[ ()]',by_sevens[1][1][0])[2]).lower()
+    bigdct[id]['question']=by_sevens[i][2][0]
+    bigdct[id]['ans_a']=by_sevens[i][3][0]
+    bigdct[id]['ans_b']=by_sevens[i][4][0]
+    bigdct[id]['ans_c']=by_sevens[i][5][0]
+    bigdct[id]['ans_d']=by_sevens[i][6][0]
+
+#dump to a file
+In [356]: import json
+     ...: test = json.dumps(bigdct)
+
+# open a new file for writing
+f = open('/Users/james/repos/hamgame/general_questions.json', 'w')
+
+f.write(gendump)
+
+def load_data(test_type):
+  """
+  Load the question set for the chosen test
+  """
+  global bigdct
+  if test_type == 1:
+      with open('./technician_questions.json') as tech_json_data:
+        bigdct=json.load(tech_json_data)
+        tech_json_data.close()
+  elif test_type == 2:
+      with open('./general_questions.json') as gen_json_data:
+        bigdct=json.load(gen_json_data)
+        gen_json_data.close()
+  else:
+       print("Invalid selection.")
+
+print("\nChoose a test:")
+print("\nEnter 1 for Technician Class")
+print("\nEnter 2 for General Class")
+test_type = (input(prompt)).lower()
+load_data(test_type)
