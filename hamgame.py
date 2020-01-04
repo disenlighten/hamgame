@@ -22,11 +22,6 @@ helptext = "\n Enter the letter of your answer."
 helptext += "\n Enter 'showme' to see the answer now. "
 helptext += "\n Enter 'quit' to end the program."
 
-#load dictionary
-with open('./technician_questions.json') as json_data:
-    bigdct=json.load(json_data)
-json_data.close()
-
 #load known_ans
 #tbd 12/15
 
@@ -93,7 +88,30 @@ def present_results(score, wrong_answers):
         print("Your answer was: " + v) 
         print("The correct answer is: " + bigdct[k]['correct_ans'])
 
+def load_data(test_type):
+  """
+  Load the question set for the chosen test
+  """
+  global bigdct
+  if test_type == "1":
+      with open('./technician_questions.json') as tech_json_data:
+        bigdct=json.load(tech_json_data)
+        tech_json_data.close()
+  elif test_type == "2":
+      with open('./general_questions.json') as gen_json_data:
+        bigdct=json.load(gen_json_data)
+        gen_json_data.close()
+  else:
+       print("Invalid selection.")
+
 # Main loop
+#test_type = ""
+print("\nChoose a test:")
+print("\nEnter 1 for Technician Class")
+print("\nEnter 2 for General Class")
+test_type = (input(prompt)).lower()
+load_data(test_type)
+
 total_question_count=0
 while total_question_count<34 and my_guess != 'quit':
     chosen_question=random.choice(list(bigdct.keys()))
