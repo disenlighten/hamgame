@@ -3,6 +3,8 @@
 #module imports
 import json
 import random
+import webbrowser
+import os
 
 #define variables
 correct_count = 0
@@ -11,8 +13,11 @@ wrong_ans={}
 known_ans={}
 quiz_used=[]
 bigdct={}
-valid_answers=['a', 'b', 'c', 'd']
+valid_answers=('a', 'b', 'c', 'd')
+figure_questions=('G7A11', 'G7A12')
 my_guess = ""
+exit_game = ""
+question_in_progress = ""
 
 #define prompt - 
 prompt = "\n  > "
@@ -22,10 +27,10 @@ helptext = "\n Enter the letter of your answer."
 helptext += "\n Enter 'showme' to see the answer now. "
 helptext += "\n Enter 'quit' to end the program."
 
-#load known_ans
-#tbd 12/15
-
 #define functions
+#def open_file(path_to_graphic):
+#  webbrowser.open('file://' + (os.path.join(, path_to_graphic)))
+
 def showme(chosen_question):
     """
     Get the correct answer immediately
@@ -40,31 +45,35 @@ def check_input(current_guess):
     """
     if current_guess in valid_answers:
         return True
-    if current_guess == 'showme':
+    elif current_guess == 'showme':
         showme(chosen_question)
-        return True
-    if current_guess == 'help':
-        print(helptext)
-        return True            
-    if len(current_guess) > 1 and current_guess != "quit":
+    elif current_guess == 'help':
+        print(helptext)        
+    elif len(current_guess) > 1 and current_guess != "quit":
         print("You may only guess 1 letter at a time, please.")
-        return True
-    if not current_guess in valid_answers:
+    elif current_guess == "quit":
+        global exit_game
+        exit_game = True
+        return exit_game
+    else:
         print("Valid answer are a, b, c, d.")
-        return True
-    #else:
-        
-     #   return False
+        global question_in_progress
+        question_in_progress = True
 
-def present_question(chosen_question):
+def present_question(chosen_question,figure_questions):
     """
     Present a question to the player
     """
+    print(chosen_question)
     print(bigdct[chosen_question]['question'])
     print(bigdct[chosen_question]['ans_a'])
     print(bigdct[chosen_question]['ans_b'])
     print(bigdct[chosen_question]['ans_c'])
     print(bigdct[chosen_question]['ans_d'])
+
+#    if test_type == "2":
+#       if chosen_question in figure_questions:
+#            open_file('./images/general/figure_g7-1.png')
 
 def present_results(score, wrong_answers):
     """
@@ -101,47 +110,60 @@ def load_data(test_type):
       with open('./general_questions.json') as gen_json_data:
         bigdct=json.load(gen_json_data)
         gen_json_data.close()
+  elif test_type == "3":
+      with open('./extra_questions.json') as ext_json_data:
+        bigdct=json.load(ext_json_data)
+        ext_json_data.close()
+  # needs to be an exception
   else:
        print("Invalid selection.")
+
+def get_test_question_count(test_type):
+    if (test_type == "1" or test_type == "2"):
+        question_count = 34
+    elif test_type == "3":
+        question_count = 66
+    return question_count
 
 # Main loop
 #test_type = ""
 print("\nChoose a test:")
 print("\nEnter 1 for Technician Class")
 print("\nEnter 2 for General Class")
+print("\nEnter 3 for Extra Class")
 test_type = (input(prompt)).lower()
 load_data(test_type)
-
 total_question_count=0
-while total_question_count<34 and my_guess != 'quit':
-    chosen_question=random.choice(list(bigdct.keys()))
-    if chosen_question not in quiz_used:
-        total_question_count+=1
-        present_question(chosen_question)
-        my_guess = (input(prompt)).lower()
-        while my_guess != 'quit':
-            if check_input(my_guess):
-                if my_guess == bigdct[chosen_question]['correct_ans']:
-                    correct_count +=1
-                    known_ans.update({chosen_question:known_count}) 
-                    known_ans[chosen_question] +=1
-                    quiz_used.append(chosen_question)
-                    print("\x1b[1;32;40m ----------------  \n")
-                    print("\x1b[0m")
-                    break       
-                else:
-                    quiz_used.append(chosen_question)
-                    wrong_ans.update({chosen_question:my_guess})
-                    print("\x1b[1;31;40m ----------------  \n")
-                    print("\x1b[0m")
-                    break        
-            elif my_guess == 'quit':
-                    print("\n Goodbye! Keep studying, turkey legs!")
-                    present_results(correct_count,wrong_ans)
-                    my_guess=''
-                    wrong_ans={}
-                    quiz_used=[]
-                    break
+test_question_count = get_test_question_count(test_type)
+
+while total_question_count<test_question_count and not exit_game:
+        if not question_in_progress:
+            chosen_question=random.choice(list(bigdct.keys()))
+            if chosen_question not in quiz_used:
+                present_question(chosen_question, figure_questions)
+                my_guess = (input(prompt)).lower()
+                if check_input(my_guess):
+                    if my_guess == bigdct[chosen_question]['correct_ans']:
+                        total_question_count+=1
+                        correct_count +=1
+                        known_ans.update({chosen_question:known_count})
+                        known_ans[chosen_question] +=1
+                        quiz_used.append(chosen_question)
+                        print("\x1b[1;32;40m ----------------  \n")
+                        print("\x1b[0m")
+                    elif exit_game:
+                        print("\n Goodbye! Keep studying, turkey legs!")
+                        present_results(correct_count,wrong_ans)
+                        my_guess=''
+                        wrong_ans={}
+                        quiz_used=[]
+                        break
+                    else:
+                        total_question_count+=1
+                        quiz_used.append(chosen_question)
+                        wrong_ans.update({chosen_question:my_guess})
+                        print("\x1b[1;31;40m ----------------  \n")
+                        print("\x1b[0m")
 present_results(correct_count,wrong_ans)
 my_guess=''
 wrong_ans={}

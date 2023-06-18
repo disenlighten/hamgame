@@ -855,3 +855,48 @@ print("\nEnter 1 for Technician Class")
 print("\nEnter 2 for General Class")
 test_type = (input(prompt)).lower()
 load_data(test_type)
+
+# 20230612
+# creatng data for extra class study
+
+ def grouper(iterable, n, fillvalue=None):
+     "Collect data into fixed-length chunks or blocks"
+     # grouper('ABCDEFG', 3, 'x') --> ABC DEF Gxx
+     args = [iter(iterable)] * n
+     return zip_longest(fillvalue=fillvalue, *args)
+
+
+# extra dct creation - 2023-06-13
+for i in range(0,621):
+    id=re.split(r'[ ()]',by_sevens[i][1][0])[0]
+    bigdct[id] = {}
+    bigdct[id]['correct_ans']=(re.split(r'[()]',by_sevens[i][1][0])[1]).lower()
+    bigdct[id]['question']=by_sevens[i][2][0]
+    bigdct[id]['ans_a']=by_sevens[i][3][0]
+    bigdct[id]['ans_b']=by_sevens[i][4][0]
+    bigdct[id]['ans_c']=by_sevens[i][5][0]
+    bigdct[id]['ans_d']=by_sevens[i][6][0]
+
+
+f = open("/Users/james/repos/hamgame/extra_questions_groomed.txt", "r")
+    ...:
+    ...: readLines = f.readlines()
+    ...: Types = [line.split("\n") for line in readLines]
+by_sevens = list(grouper(Types, 7))
+
+
+# delete empty lines
+gsed '/^$/d' ("/Users/james/repos/hamgame/extra_questions_groomed.txt"
+
+# test
+In [21]: for i in range(0, 621):
+    ...:     print(by_sevens[i][1])
+
+
+import re
+
+
+
+extdump = json.dumps(bigdct)
+f = open('/Users/james/repos/hamgame/extra_questions.json', 'w')
+f.write(extdump)
